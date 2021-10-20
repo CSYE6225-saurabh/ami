@@ -1,0 +1,14 @@
+#Script files
+*.sh 
+
+#Certificates
+*.cer
+*.pem
+
+#DS_store files
+**/.DS_Store
+
+#files
+*.jar
+*.class
+*.war
