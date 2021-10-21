@@ -1,34 +1,34 @@
 {
     "variables": {
-    "aws_access_key": "",
-    "aws_secret_key": "",
-    "aws_region": "",
-    "subnet_id":"",
-    "source_ami": "",
-    "ssh_username": ""
-  },
-    "builders": [
-      {
+        "aws_region": "${aws_region}",
+        "source_ami": "${source_ami}",
+        "subnet_id": "${subnet_id}",
+        "ssh_username": "${ssh_username}",
+        "profile": "${profile}",
+        "instance_type":"${instance_type}",
+        "volume_type":"${volume_type}",
+        "delete_on_termination":"${delete_on_termination}"
+  
+      },
+      "builders": [{
         "type": "amazon-ebs",
-        "access_key": "{{user `aws_access_key`}}",
-        "secret_key": "{{user `aws_secret_key`}}",
+        "ami_users" : "{{user `ami_users`}}",
+        "profile" : "{{user `profile`}}",
         "region": "{{user `aws_region`}}",
-        "subnet_id": "{{user `subnet_id`}}",
         "source_ami": "{{user `source_ami`}}",
-        "instance_type": "t2.micro",
+        "instance_type": "{{user `instance_type`}}",
         "ssh_username": "{{user `ssh_username`}}",
-        "ami_name": "csye6225_{{timestamp}}",
-        "ami_description":"AMI for CSYE6225",
+        "ami_name": "csye6225_a4_{{timestamp}}",
+        "ami_description": "csye6225 assignment 3",
         "launch_block_device_mappings": [
-          {
-            "device_name": "/dev/sda1",
-            "volume_type": "gp2",
-            "volume_size": 8,
-            "delete_on_termination": true
-          }
+            {
+                "device_name": "/dev/sda1",
+                "volume_size": 8,
+                "volume_type": "{{user `volume_type`}}",
+                "delete_on_termination": "{{user `delete_on_termination`}}"
+            }
         ]
-      }
-    ],
+      }],
     "provisioners": [
       {
         "type": "shell",
@@ -36,6 +36,7 @@
             "sudo apt update -y",
             "sudo apt upgrade -y",
             "sudo apt install nodejs -y",
+            "sudo apt-get install nodejs -y",
             "cd /home/ubuntu",
             "sudo apt-get install mysql-server -y"
         ]
