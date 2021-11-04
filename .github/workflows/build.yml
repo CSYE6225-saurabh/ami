@@ -23,7 +23,7 @@ jobs:
           templateFile: 'ami.json'
           workingDir: '.'
         env:
-          AWS_REGION: us-east-1
+          AWS_REGION: ${{secrets.AWS_REGION}}
           SOURCE_AMI: ${{secrets.SOURCE_AMI}}
           SUBNET_ID: ${{secrets.SUBNET_ID}}
           SSH_USERNAME: ${{secrets.SSH_USERNAME}}
