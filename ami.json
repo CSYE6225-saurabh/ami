@@ -6,9 +6,6 @@
         "ssh_username": "${{env `SSH_USERNAME`}}",
         "access_key": "${{env `AWS_ACCESS_KEY`}}",
         "secret_key": "${{env `AWS_SECRET_KEY`}}",       
-        "instance_type":"${{env `INSTANCE_TYPE`}}",
-        "volume_type":"${{env `VOLUME_TYPE`}}",
-        "delete_on_termination":"${{env `DELETE_ON_TERMINATION`}}",
         "ami_users":"${{env `AMI_USERS`}}"
       },
       "builders": [{
@@ -18,7 +15,7 @@
         "secret_key": "{{user `aws_secret_key`}}",
         "region": "{{user `aws_region`}}",
         "source_ami": "{{user `source_ami`}}",
-        "instance_type": "{{user `instance_type`}}",
+        "instance_type": "t2.micro",
         "ssh_username": "{{user `ssh_username`}}",
         "ami_name": "csye6225_a4_{{timestamp}}",
         "ami_description": "csye6225 assignment 3",
@@ -26,8 +23,8 @@
             {
                 "device_name": "/dev/sda1",
                 "volume_size": 8,
-                "volume_type": "{{user `volume_type`}}",
-                "delete_on_termination": "{{user `delete_on_termination`}}"
+                "volume_type": "gp2",
+                "delete_on_termination": true
             }
         ]
       }],
