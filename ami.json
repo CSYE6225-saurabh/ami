@@ -10,6 +10,7 @@
         "volume_type":"${{env volume_type}}",
         "delete_on_termination":"${{env delete_on_termination}}",
         "ami_users":"${{env `ami_users`}}"
+        
       },
       "builders": [{
         "type": "amazon-ebs",
