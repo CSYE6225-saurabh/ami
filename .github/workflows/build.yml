@@ -1,0 +1,36 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  packer_build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Packer build
+        uses: ExitoLab/packer_build_action_aws@v0.2.10
+        with:
+          templateFile: 'ami.json'
+          workingDir: '.'
+        env:
+          aws_region: ${{aws_region}}
+          source_ami: ${{source_ami}}
+          subnet_id: ${{subnet_id}}
+          ssh_username: ${{ssh_username}}
+          access_key: ${{aws_access_key}}
+          secret_key: ${{aws_secret_key}}       
+          instance_type: ${{instance_type}}
+          volume_type: ${{volume_type}}
+          delete_on_termination: ${{delete_on_termination}}
+          ami_users : ${{ami_users}}
+      
