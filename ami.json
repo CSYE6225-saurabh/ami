@@ -1,15 +1,15 @@
 {
     "variables": {
-        "aws_region": "${aws_region}",
-        "source_ami": "${source_ami}",
-        "subnet_id": "${subnet_id}",
-        "ssh_username": "${ssh_username}",
-        "access_key": "{{user `aws_access_key`}}",
-        "secret_key": "{{user `aws_secret_key`}}",       
-        "instance_type":"${instance_type}",
-        "volume_type":"${volume_type}",
-        "delete_on_termination":"${delete_on_termination}"
-  
+        "aws_region": "${{env aws_region}}",
+        "source_ami": "${{env source_ami}",
+        "subnet_id": "${{env subnet_id}",
+        "ssh_username": "${{env ssh_username}",
+        "access_key": "${{env `aws_access_key`}}",
+        "secret_key": "${{env `aws_secret_key`}}",       
+        "instance_type":"${{env instance_type}}",
+        "volume_type":"${{env volume_type}}",
+        "delete_on_termination":"${{env delete_on_termination}}",
+        "ami_users":"${{env `ami_users`}}"
       },
       "builders": [{
         "type": "amazon-ebs",
@@ -36,7 +36,7 @@
         "type": "shell",
         "inline": [
             "sudo apt update -y",
-            "sudo apt upgrade -y",
+            "sudo apt update -y",
             "sudo apt install nodejs -y",
             "sudo apt-get install nodejs -y",
             "cd /home/ubuntu",
