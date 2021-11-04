@@ -1,17 +1,17 @@
 {
   "variables": {
 
-    "aws_access_key": "{{ env `AWS_ACCESS_KEY_ID` }}",
+    "aws_access_key": "{{ env `AWS_ACCESS_KEY` }}",
     
-    "aws_secret_key": "{{ env `AWS_SECRET_KEY_ID` }}",
+    "aws_secret_key": "{{ env `AWS_SECRET_KEY` }}",
     
     "aws_region": "{{ env `AWS_REGION` }}",
     
-    "source_ami": "{{ env `AWS_SOURCE_AMI` }}",
+    "source_ami": "{{ env `SOURCE_AMI` }}",
     
-    "subnet_id": "{{ env `AWS_SUBNET_ID` }}",
+    "subnet_id": "{{ env `SUBNET_ID` }}",
     
-    "ssh_username": "{{ env `AWS_SSH_USERNAME` }}",
+    "ssh_username": "{{ env `SSH_USERNAME` }}",
     
     "ami_users": "{{ env `AMI_USERS` }}"
     
