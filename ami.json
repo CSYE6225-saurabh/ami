@@ -1,10 +1,12 @@
 {
     "variables": {
+    
         "aws_region": "${aws_region}",
         "source_ami": "${source_ami}",
         "subnet_id": "${subnet_id}",
         "ssh_username": "${ssh_username}",
-        "profile": "${profile}",
+        "access_key": "{aws_access_key}",
+        "secret_key": "{aws_secret_key}",       
         "instance_type":"${instance_type}",
         "volume_type":"${volume_type}",
         "delete_on_termination":"${delete_on_termination}"
@@ -13,7 +15,8 @@
       "builders": [{
         "type": "amazon-ebs",
         "ami_users" : "{{user `ami_users`}}",
-        "profile" : "{{user `profile`}}",
+        "access_key": "{{user `aws_access_key`}}",
+        "secret_key": "{{user `aws_secret_key`}}",
         "region": "{{user `aws_region`}}",
         "source_ami": "{{user `source_ami`}}",
         "instance_type": "{{user `instance_type`}}",
