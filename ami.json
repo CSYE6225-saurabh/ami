@@ -1,32 +1,59 @@
 {
-    "variables": {
-        "aws_region": "${{env `AWS_REGION`}}",
-        "source_ami": "${{env `SOURCE_AMI`}}",
-        "subnet_id": "${{env `SUBNET_ID`}}",
-        "ssh_username": "${{env `SSH_USERNAME`}}",
-        "access_key": "${{env `AWS_ACCESS_KEY`}}",
-        "secret_key": "${{env `AWS_SECRET_KEY`}}",       
-        "ami_users":"${{env `AMI_USERS`}}"
-      },
-      "builders": [{
-        "type": "amazon-ebs",
-        "ami_users" : "{{user `ami_users`}}",
-        "access_key": "{{user `access_key`}}",
-        "secret_key": "{{user `secret_key`}}",
-        "region": "{{user `aws_region`}}",
-        "source_ami": "{{user `source_ami`}}",
-        "instance_type": "t2.micro",
-        "ssh_username": "{{user `ssh_username`}}",
-        "ami_name": "csye6225_a4_{{timestamp}}",
-        "ami_description": "csye6225 assignment 3",
-        "launch_block_device_mappings": [
-            {
-                "device_name": "/dev/sda1",
-                "volume_size": 8,
-                "volume_type": "gp2",
-                "delete_on_termination": true
-            }
-        ]
+  "variables": {
+
+    "aws_access_key": "{{ env `AWS_ACCESS_KEY_ID` }}",
+    
+    "aws_secret_key": "{{ env `AWS_SECRET_KEY_ID` }}",
+    
+    "aws_region": "{{ env `AWS_REGION` }}",
+    
+    "source_ami": "{{ env `AWS_SOURCE_AMI` }}",
+    
+    "subnet_id": "{{ env `AWS_SUBNET_ID` }}",
+    
+    "ssh_username": "{{ env `AWS_SSH_USERNAME` }}",
+    
+    "ami_users": "{{ env `AMI_USERS` }}"
+    
+    },
+    "builders": [{
+
+      "type": "amazon-ebs",
+      
+      "ami_users" : "{{user `ami_users`}}",
+      
+      "access_key": "{{user `aws_access_key`}}",
+      
+      "secret_key": "{{user `aws_secret_key`}}",
+      
+      "region": "{{user `aws_region`}}",
+      
+      "source_ami": "{{user `source_ami`}}",
+      
+      "instance_type": "t2.micro",
+      
+      "ssh_username": "{{user `ssh_username`}}",
+      
+      "ami_name": "csye6225_a4_{{timestamp}}",
+      
+      "ami_description": "csye6225 assignment 4",
+      
+      "launch_block_device_mappings": [
+      
+      {
+      
+      "device_name": "/dev/sda1",
+      
+      "volume_size": 8,
+      
+      "volume_type": "gp2",
+      
+      "delete_on_termination": true
+      
+      }
+      
+      ]
+      
       }],
     "provisioners": [
       {
