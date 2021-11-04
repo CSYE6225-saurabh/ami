@@ -23,14 +23,14 @@ jobs:
           templateFile: 'ami.json'
           workingDir: '.'
         env:
-          aws_region: ${{AWS_REGION}}
-          source_ami: ${{SOURCE_AMI}}
-          subnet_id: ${{SUBNET_ID}}
-          ssh_username: ${{SSH_USERNAME}}
-          access_key: ${{AWS_ACCESS_KEY}}
-          secret_key: ${{AWS_SECRET_KEY}}       
-          instance_type: ${{INSTANCE_TYPE}}
-          volume_type: ${{VOLUME_TYPE}}
-          delete_on_termination: ${{DELETE_ON_TERMINATION}}
-          ami_users : ${{AMI_USERS}}
+          AWS_REGION: ${{AWS_REGION}}
+          SOURCE_AMI: ${{SOURCE_AMI}}
+          SUBNET_ID: ${{SUBNET_ID}}
+          SSH_USERNAME: ${{SSH_USERNAME}}
+          AWS_ACCESS_KEY: ${{AWS_ACCESS_KEY}}
+          AWS_SECRET_KEY: ${{AWS_SECRET_KEY}}       
+          INSTANCE_TYPE: ${{INSTANCE_TYPE}}
+          VOLUME_TYPE: ${{VOLUME_TYPE}}
+          DELETE_ON_TERMINATION: ${{DELETE_ON_TERMINATION}}
+          AMI_USERS : ${{AMI_USERS}}
       
