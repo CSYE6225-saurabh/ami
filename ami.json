@@ -34,9 +34,9 @@
       
       "ssh_username": "{{user `ssh_username`}}",
       
-      "ami_name": "csye6225_a4_{{timestamp}}",
+      "ami_name": "csye6225_ami_{{timestamp}}",
       
-      "ami_description": "csye6225 assignment 4",
+      "ami_description": "CSYE6225 AMI",
       
       "launch_block_device_mappings": [
       
